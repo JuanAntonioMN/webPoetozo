@@ -3,7 +3,7 @@ slug: "punto-final"
 titulo: "Punto final"
 autor: "poetozo"
 fecha: "15-10-2024"
-imagen: "../../public/img/punto-final.svg"
+imagen: "/img/punto-final.svg"
 fondo: "bg-cafe"
 texto: "text-white"
 tags: ["poema", "amor", "soledad"]

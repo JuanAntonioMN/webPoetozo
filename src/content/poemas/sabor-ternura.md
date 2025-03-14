@@ -3,7 +3,7 @@ slug: "sabor-ternura"
 titulo: "Sabor a ternura [Chicle]"
 autor: "poetozo"
 fecha: "31/01/2025"
-imagen: "../../public/img/sabor-ternura.svg"
+imagen: "/img/sabor-ternura.svg"
 fondo: "bg-rosa"
 texto: "text-white"
 tags: ["poema", "amor", "soledad"]

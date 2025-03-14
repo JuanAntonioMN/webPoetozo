@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "@astrojs/markdoc": "^0.12.10",
+    "@astrojs/vercel": "^8.1.2",
     "@tailwindcss/vite": "^4.0.6",
     "astro": "^5.2.5",
     "marked": "^15.0.7",

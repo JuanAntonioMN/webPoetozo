@@ -3,7 +3,7 @@ slug: "pasado"
 titulo: "Pasado"
 autor: "poetozo"
 fecha: "18/01/2025"
-imagen: "../../public/img/pasado.svg"
+imagen: "/img/pasado.svg"
 fondo: "bg-black"
 texto: "text-white"
 tags: ["poema", "amor", "soledad"]

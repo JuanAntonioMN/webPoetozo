@@ -3,7 +3,7 @@ slug: "poema-mas"
 titulo: "Soy un poema mas"
 autor: "poetozo"
 fecha: "30-01-2025"
-imagen: "../../public/img/poema-mas.svg"
+imagen: "/img/poema-mas.svg"
 fondo: "bg-gris-rosa"
 texto: "text-black"
 tags: ["poema", "amor", "soledad"]

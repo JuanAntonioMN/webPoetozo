@@ -3,7 +3,7 @@ slug: "flores-verano"
 titulo: "Flores de verano [ Cualidades ]"
 autor: "poetozo"
 fecha: "16-01-2025"
-imagen: "/public/img/flores-verano.svg"
+imagen: "/img/flores-verano.svg"
 fondo: "bg-amarillo"
 texto: "text-black"
 tags: ["poema", "amor", "soledad"]

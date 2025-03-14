@@ -3,7 +3,7 @@ slug: "quiero-poema"
 titulo: "Quiero ser un poema"
 autor: "poetozo"
 fecha: "18/01/2025"
-imagen: "../../../public/img/quiero-poema.svg"
+imagen: "/img/quiero-poema.svg"
 fondo: "bg-black"
 texto: "text-white"
 tags: ["poema", "amor", "soledad"]
