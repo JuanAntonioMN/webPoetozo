@@ -1,0 +1,59 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import Nav from "../../components/nav.astro";
+import { getCollection } from "astro:content";
+import Footer from "../../components/footer.astro";
+
+const poemass=await getCollection("poemas");
+export async function getStaticPaths() {
+    const poemario = await getCollection("poemarios");
+    const poemarios = poemario.map((poemario:any) => ({
+        params: { slug: poemario.slug },
+        props: { poemario },
+    }));
+    return poemarios;
+}
+
+const { poemario } = Astro.props;
+const { data }=poemario;
+const {nombre,imagen,poemas}=data;
+
+const poemasPoemrio= poemass.filter((poema:any)=>{
+    return poemas.includes(poema.data.titulo);
+})
+
+const info="/";
+---
+
+<Layout title="Poemario" color="bg-azul-pastel">
+    
+    <Nav info={info}/>
+
+    <div class="lg:px-10  w-full h-screen mt-20 lg:m-0">
+        <div style={`background-image: url(${imagen})`} class="bg-cover w-full h-screen bg-center flex justify-center items-center lg:rounded-4xl ">
+               <h1 class=" text-4xl lg:text-7xl font-zilla border-6 border-white 2xl:text-9xl">Poemario {nombre}</h1>
+       </div>
+    </div>
+
+  
+    <div class="py-2  lg:p-10 w-full h-auto">
+
+        <h2 class="text-3xl font-zilla px-2 lg:px-0 2xl:text-7xl">Poemas</h2>
+        <div class="w-full h-auto flex flex-wrap lg:py-10">
+            {
+                poemasPoemrio.map((poema:any)=>{
+                    return (
+                    <a href={`/poema/${poema.slug}`} class="w-1/2  h-80  lg:w-1/3 lg:h-screen flex justify-center items-center">
+                       <div style={`background-image: url(${poema.data.imagen})`} class="bg-cover w-full h-full bg-center flex justify-start items-start lg:items-end p-2 lg:px-5">
+                        <span class={`${poema.data.texto} font-zilla text-2xl lg:text-3xl 2xl:text-6xl`}>{poema.data.titulo}</span>
+                       </div>
+                    </a>
+                    )
+                })
+            }
+        </div>
+    </div>
+
+    <Footer/>
+    
+</Layout>

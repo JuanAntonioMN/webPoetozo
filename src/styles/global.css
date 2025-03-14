@@ -1,0 +1,66 @@
+@import "tailwindcss";
+
+@theme{
+  --color-primary:#EDEDF0;
+  --color-azul-pastel:#ADCAD4;
+  --color-naranja:#FF851A;
+  --color-amarillo:#FFFA69;
+  --color-cafe:#51453B;
+  --color-rosa:#FF67A4;
+  --color-gris:#EDEDF0;
+  --color-gris-rosa:#FEEFEF;
+  --color-naranja:#FF851A;
+  --color-naranja-azul:#FFA7C3;
+  --color-naranja-rosa:#FFA7C3;
+  --color-naranja-gris:#FFA7C3;
+  --font-zilla:'Zilla Slab Highlight';
+  --font-zen:'Zen Maru Gothic';
+
+}
+
+@font-face {
+  font-family: "Zilla Slab Highlight";
+  src: url("../assets/fonts/ZillaSlabHighlight-Regular.ttf") format("truetype");
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Zilla Slab Highlight";
+  src: url("../assets/fonts/ZillaSlabHighlight-Bold.ttf") format("truetype");
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Zen Maru Gothic";
+  src: url("../assets/fonts/ZenMaruGothic-Regular.ttf") format("truetype");
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Zen Maru Gothic";
+  src: url("../assets/fonts/ZenMaruGothic-Black.ttf") format("truetype");
+  font-style: normal;
+  font-weight: 900;
+  font-display: swap;
+}
+
+.rounded-20{
+  border-radius: 20px;
+}
+
+.text-80{
+  font-size: 80px;
+}
+
+
+
+
+
+
+

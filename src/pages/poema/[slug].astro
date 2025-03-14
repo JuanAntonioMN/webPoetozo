@@ -1,0 +1,122 @@
+---
+import Layout from "../../layouts/Layout.astro"
+import { getCollection, render } from 'astro:content'; // Importar la función para acceder a las colecciones
+
+export async function getStaticPaths() {
+    const poemas = await getCollection('poemas'); // Obtener todas las entradas de la colección
+
+     return poemas.map((poema:any) => ({
+        params: { slug: poema.slug }, // Crear un objeto con el parámetro slug
+        props: { poema } // Crear un objeto con el contenido de la entrada
+    }));
+}
+
+const {poema} = Astro.props;
+const {data} =poema;
+const {titulo,autor,fecha,imagen,fondo,texto,tags}=data;
+const {Content} = await render(poema);
+
+---
+
+<Layout title={titulo}>
+
+<div class="w-full h-screen grid grid-rows-2 ">
+    <div style={`background-image: url(${imagen})`} class=" bg-cover lg:bg-center bg-top  bg-no-repeat w-full h-full grid  grid-rows-2">
+        <div class=" px-2 py-10">
+            <span class=`${texto} font-zilla text-5xl 2xl:text-8xl`>{titulo}</span>
+        </div>
+        <div class=" flex justify-start items-end px-2">
+            <p class=` ${texto} font-zilla text-xl lg:text-2xl 2xl:text-5xl`>{autor}</p>
+        </div>
+    
+    </div>
+    <div class=` ${texto} grid grid-rows-5 ${fondo}`>
+        <div class="grid grid-cols-2 px-2 w-full ">
+            <div class="grid grid-rows-2">
+                <div class="flex gap-5">
+                    <button id="compartir"  class="w-auto text-xl lg:text-2xl 2xl:text-5xl cursor-pointer"><i class="fa-solid fa-share"></i></button>
+                </div>
+              
+                <span class="font-zen text-base lg:text-2xl 2xl:text-5xl">{fecha}</span>
+                
+            </div>
+            <div class="flex flex-wrap gap-2 justify-center items-center py-1">
+            {
+                tags.map((tag:any)=>{
+                    return <span class="font-zilla text-base lg:text-2xl 2xl:text-5xl">{tag}</span>
+                })
+            }
+             
+            </div>
+        </div>
+        
+        <div class=`text-center row-span-4 ${texto} font-zilla text-xl lg:text-2xl 2xl:text-5xl overflow-y-scroll   whitespace-pre-line  scroll-smooth scrollbar-thin`>
+                <Content/>
+        </div>
+    </div>
+</div>
+
+
+<div id="card-compartir" class=" justify-center items-center w-full h-auto lg:h-2/3 hidden fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
+    <div class=" w-3/4 lg:w-2/3 bg-gray-950  h-full rounded-xl shadow-2xl">
+        <div class="flex justify-end items-end w-full lg:py-5 p-2 lg:px-10">
+            <button id="cerar-compartir" class=" cursor-pointer text-white  text-2xl lg:text-3xl font-zen"><i class="fa-solid fa-xmark"></i></button>
+        </div>
+        <div class="w-full p-5 ">
+            <h1 class=" font-zen text-xl lg:text-2xl font-bold text-white">compartir</h1>
+     
+        </div>
+     
+        <div class="flex flex-col lg:flex-row  justify-evenly items-center p-5">
+          
+            <button id="facebook" class="w-1/3 cursor-pointer text-white flex flex-col justify-center items-center gap-2 font-zen text-xl"><img src="https://img.icons8.com/?size=100&id=uLWV5A9vXIPu&format=png&color=000000" alt="fecabook" class="object-cover w-2/3 lg:w-1/4"> fecabook</button>
+            <button id="whatsapp" class="w-1/3 cursor-pointer text-white  flex flex-col justify-center items-center gap-2 font-zen text-xl"><img src="https://img.icons8.com/?size=100&id=16713&format=png&color=000000" alt="whatsapp" class="object-cover w-2/3 lg:w-1/4"> whatsapp</button>
+            <button id="tiktok" class="w-1/3 cursor-pointer text-white  flex flex-col justify-center items-center gap-2 font-zen text-xl"><img src="https://img.icons8.com/?size=100&id=fdfLpA6fsXN2&format=png&color=000000" alt="tiktok" class="object-cover w-2/3 lg:w-1/4">tiktok</button>
+            
+        </div>
+
+    </div>
+</div>
+
+
+
+<style>
+    /* Personalizar la barra de desplazamiento horizontal */
+    .scrollbar-thin {
+      scrollbar-width:thin; /* Para Firefox */
+    }
+    
+  
+  </style>
+<script>
+    const compartir:any = document.getElementById("compartir");
+    const cardCompartir:any = document.getElementById("card-compartir");
+    const cerarCompartir:any = document.getElementById("cerar-compartir");
+    const currentUrl = window.location.href;
+
+    compartir.addEventListener("click",()=>{
+        cardCompartir.classList.remove("hidden");
+    })
+    
+    cerarCompartir.addEventListener("click",()=>{
+        cardCompartir.classList.add("hidden");
+        cardCompartir.classList.add("flex");
+    })
+
+    const facebook:any = document.getElementById("facebook");
+    facebook.addEventListener("click",()=>{
+        window.open(`https://www.facebook.com/sharer/sharer.php?u=${currentUrl}`,"_blank");
+    })
+
+
+    const whatsapp:any = document.getElementById("whatsapp");
+    whatsapp.addEventListener("click",()=>{
+        window.open(`https://api.whatsapp.com/send?text=${currentUrl}`,"_blank");
+    })
+
+    const tiktok:any = document.getElementById("tiktok");
+    tiktok.addEventListener("click",()=>{
+        window.open(`https://www.tiktok.com/share/item?url=${currentUrl}`,"_blank");
+    })
+</script>
+</Layout>

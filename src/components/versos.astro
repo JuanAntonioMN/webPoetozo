@@ -1,0 +1,69 @@
+
+<div id="versos" class="w-full h-screen mt-0 lg:bg-white bg-black">
+    <div class="w-full lg:px-10 py-5 px-2">
+        <h2 class="lg:text-4xl text-2xl font-zilla lg:text-black text-white 2xl:text-7xl">Versos</h2>
+    </div>
+    <div id="carrusel" class="w-full bg-black h-4/5 flex  justify-center items-center gap-3 transition-transform duration-500 delay-700">
+        <button id="boton-izq" class="w-8 cursor-pointer"><img src="../../src/assets/img/botton-izq.svg" alt="verso1" class="w-full object-contain"></button>
+        <img  src="../../src/assets/img/mas-verso.svg" alt="verso1" class="w-full lg:w-2/3 h-full object-fill lg:object-cover carrusel-img transition-transform duration-150 delay-300">
+        <img src="https://images.unsplash.com/photo-1579783902614-a3fb3927b6a5?q=80&w=1490&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="verso1" class="w-full lg:w-2/3 h-full object-fill lg:object-cover carrusel-img hidden transition-transform duration-150 delay-300">
+        <img src="https://images.unsplash.com/photo-1605721911519-3dfeb3be25e7?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="verso1" class="w-full lg:w-2/3 h-full object-fill lg:object-cover carrusel-img hidden transition-transform duration-150 delay-300">
+
+        <button id="boton-der" class="w-8 cursor-pointer"><img src="../../src/assets/img/botton-der.svg" alt="verso1" class="w-full object-contan"></button>
+
+    </div>
+    
+
+</div>
+
+<script>
+
+
+    let contador=0;
+  
+    let botonIzq=document.getElementById('boton-izq');
+    let botonDer=document.getElementById('boton-der');
+    let imgs=document.querySelectorAll('.carrusel-img');
+    botonIzq.addEventListener('click',()=>{
+       
+        imgs[contador].classList.add('hidden');
+        console.log(imgs[contador]);
+        if(contador===0){
+            contador=3;
+        }
+        contador--;
+        imgs[contador].classList.remove('hidden');
+        
+    })
+
+    botonDer.addEventListener('click',()=>{
+        imgs[contador].classList.add('hidden');
+        contador++;
+        if(contador===3){
+            contador=0;
+        }
+       
+
+     
+        imgs[contador].classList.remove('hidden');
+    
+    })
+
+    function cambiarImg(){
+        imgs[contador].classList.add('hidden');
+        contador++;
+        if(contador===3){
+            contador=0;
+        }   
+       
+        imgs[contador].classList.remove('hidden');
+    
+       
+     }
+
+     setInterval(cambiarImg, 5000);
+    document.getElementById("btn-verso").addEventListener("click", () => {
+  document.getElementById("versos").scrollIntoView({ behavior: "smooth", block: "center",inline: "nearest"  });
+});
+   
+</script>

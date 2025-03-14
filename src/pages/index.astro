@@ -1,0 +1,39 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Nav from "../components/nav.astro";
+import Welcome from "../components/welcome.astro";
+import Versos from "../components/versos.astro";
+import Poemas from "../components/poemas.astro";
+import Poemarios from "../components/poemarios.astro";
+import Informacion from "../components/informacion.astro";
+import Footer from "../components/footer.astro";
+---
+
+<Layout title="Poetozo">
+
+     <header class="w-full h-screen bg-azul-pastel">
+        <Nav/>
+        <div class="w-full h-screen lg:px-3">
+            <Welcome/>
+        </div>
+        
+    </header>
+        
+        
+    <Versos/>
+        
+        
+        
+    <Poemas/>
+        
+        
+    <Poemarios/> 
+        
+    
+    <Informacion/>
+     
+        
+        
+    <Footer/> 
+
+</Layout>

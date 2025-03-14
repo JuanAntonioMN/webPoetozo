@@ -1,0 +1,15 @@
+---
+const {poemario}=Astro.props;
+const {slug,data}=poemario;
+const {nombre,imagen,rotate}=data;
+---
+
+<a href=`/poemarios/${slug}` class="flex-none w-[90%] h-3/4 md:w-2/3  md:h-full lg:h-96 2xl:h-4/5 lg:w-[30%] rounded-4xl" >
+    <div style={`background-image: url(${imagen})`} class=" bg-cover w-full h-full flex items-end rounded-4xl">
+        <div class={`bg-black w-full h-14 2xl:h-24 flex items-center justify-center ${rotate} mb-5 `}>
+            <span  class={`text-white font-zilla text-5xl 2xl:text-8xl ${rotate} font-bold cursor-pointer`} >{nombre}</span>
+        </div>
+    </div> 
+</a>
+
+

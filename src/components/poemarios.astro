@@ -1,0 +1,24 @@
+---
+import Poemario from "./poemario.astro";
+import { getCollection } from "astro:content";
+const poemarios= await getCollection("poemarios");
+---
+
+<div id="Poemario" class="w-full h-screen mb-20  lg:mb-32">
+    <div class="w-full lg:px-10 lg:py-5 p-2">
+        <h4 class="text-2xl lg:text-4xl font-zilla 2xl:text-7xl">Poemarios</h4>
+    </div>
+
+    <div class="flex w-full h-full p-2 lg:p-0  gap-5 lg:justify-around items-center overflow-x-auto">
+        
+        {
+            poemarios.map((poemario)=>{
+                return <Poemario {poemario}/>
+            })
+        } 
+        
+  </div>
+      
+</div>
+  
+<script src="/src/script/transicion.js"></script>

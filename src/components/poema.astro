@@ -1,0 +1,41 @@
+---
+import { render } from "astro:content";
+
+const {poema}=Astro.props;
+const {slug,data}=poema
+const {titulo,autor,fecha,imagen,fondo,texto}=data;
+const {Content} = await render(poema);
+---
+
+<div  class=`w-1/4 h-80 2xl:h-[700px] flex flex-col shadow-2xl cursor-pointer hover:transition-transform ease-out duration-500 delay-300 hover:scale-105 ${fondo} rounded-lg`>
+    <div class="w-full h-1/2">
+        <img src={imagen} alt={titulo} class="w-full h-full object-cover rounded-t-lg">
+    </div>
+    <div class=`flex flex-col ${fondo}  rounded-b-lg w-full h-full ${texto}`>
+        <div class="w-full flex justify-between">
+            <p class="text-lg font-zen 2xl:text-3xl">{autor}</p>
+            <p class="text-lg font-zen 2xl:text-3xl">{fecha}</p>
+            
+        </div>
+        <div>
+            <span class="text-xl font-zilla 2xl:text-3xl">{titulo}</span>
+        </div>
+
+        <div>
+
+        </div>
+        <div class="w-full flex-col text-center whitespace-pre-line overflow-ellipsis line-clamp-4 2xl:text-xl 2xl:line-clamp-[10]">
+            
+                <Content />
+        </div>
+
+        
+        <div class="w-full  flex justify-end items-end  ">
+                 <a class="w-2/4 h-auto py-1 2xl:py-2 2xl:w-1/3  bg-black font-zen text-white text-center text-xl 2xl:text-3xl rounded-lg" href=`/poema/${slug}`>Leer poema</a>
+        </div>
+        
+       
+        </div>
+       
+</div>
+
